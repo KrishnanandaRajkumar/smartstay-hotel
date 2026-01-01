@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">Book Your Room</h2>
+
+<!-- ERROR MESSAGE (ROOM NOT AVAILABLE) -->
+{% if error %}
+<div class="alert alert-danger text-center">
+  {{ error }}
+</div>
+{% endif %}
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <form method="post" class="card p-4 shadow">
+
+      <!-- ===================== -->
+      <!-- Guest Details -->
+      <!-- ===================== -->
+      <h5 class="mb-3">Guest Information</h5>
+
+      <div class="mb-3">
+        <label>Name</label>
+        <input name="name" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label>Email</label>
+        <input name="email" type="email" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label>Phone</label>
+        <input name="phone" class="form-control" required>
+      </div>
+
+      <hr>
+
+      <!-- ===================== -->
+      <!-- Stay Details -->
+      <!-- ===================== -->
+      <h5 class="mb-3">Stay Details</h5>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>Check-in Date</label>
+          <input name="check_in"
+                 type="date"
+                 class="form-control"
+                 value="{{ request.args.get('check_in') }}"
+                 required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Check-out Date</label>
+          <input name="check_out"
+                 type="date"
+                 class="form-control"
+                 value="{{ request.args.get('check_out') }}"
+                 required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>Check-in Time</label>
+          <input name="check_in_time" type="time" class="form-control" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Check-out Time</label>
+          <input name="check_out_time" type="time" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>Number of Guests</label>
+        <input name="guests" type="number" min="1" class="form-control" required>
+      </div>
+
+      <hr>
+
+      <!-- ===================== -->
+      <!-- Food Service -->
+      <!-- ===================== -->
+      <h5 class="mb-3">Food Service</h5>
+
+      <a href="{{ url_for('food_menu') }}"
+         target="_blank"
+         class="btn btn-outline-primary mb-3">
+        🍽 View Buffet Menu
+      </a>
+
+      <div class="card mb-4 shadow-sm">
+        <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg"
+             class="card-img-top"
+             style="height:200px; object-fit:cover;">
+        <div class="card-body">
+          <h6>Food & Dining</h6>
+          <p class="text-muted">
+            Enjoy delicious buffet meals prepared by our expert chefs.
+          </p>
+
+          <select name="food_option" class="form-control">
+            <option value="None">No Food</option>
+            <option value="Breakfast">Breakfast (+₹300)</option>
+            <option value="Full Board">Breakfast + Lunch + Dinner (+₹900)</option>
+          </select>
+
+          <small class="text-muted d-block mt-2">
+            You can view the buffet menu in a new tab and return to complete booking.
+          </small>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- ===================== -->
+      <!-- Facilities -->
+      <!-- ===================== -->
+      <h5 class="mb-3">Hotel Facilities</h5>
+
+      <div class="row">
+
+        <!-- Gym -->
+        <div class="col-md-6 mb-3">
+          <div class="card shadow h-100">
+            <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg"
+                 class="card-img-top"
+                 style="height:180px; object-fit:cover;">
+            <div class="card-body">
+              <h6>Gym Access</h6>
+              <p class="text-muted">Fully equipped modern fitness center.</p>
+              <p><strong>₹500</strong></p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="gym" id="gym">
+                <label class="form-check-label" for="gym">
+                  Add Gym Access
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pool -->
+        <div class="col-md-6 mb-3">
+          <div class="card shadow h-100">
+            <img src="https://images.pexels.com/photos/261045/pexels-photo-261045.jpeg"
+                 class="card-img-top"
+                 style="height:180px; object-fit:cover;">
+            <div class="card-body">
+              <h6>Swimming Pool</h6>
+              <p class="text-muted">Relax in our luxury swimming pool.</p>
+              <p><strong>₹300</strong></p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="pool" id="pool">
+                <label class="form-check-label" for="pool">
+                  Add Pool Access
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===================== -->
+      <!-- Submit -->
+      <!-- ===================== -->
+      <button class="btn btn-success w-100 mt-4">
+        Confirm Booking
+      </button>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

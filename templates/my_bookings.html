@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="mb-4 text-center">My Bookings</h2>
+
+<!-- ADMIN CANCELLATION NOTICE -->
+{% if has_cancelled %}
+<div class="alert alert-danger text-center">
+  One or more of your bookings were cancelled by the hotel administration.
+  For queries, please email <strong>support@smartstay.com</strong>.
+</div>
+{% endif %}
+
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Room</th>
+      <th>Check-in</th>
+      <th>Check-out</th>
+      <th>Guests</th>
+      <th>Total Price</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for b in bookings %}
+    <tr>
+      <td>{{ b[0] }}</td>
+      <td>{{ b[1] }}</td>
+      <td>{{ b[2] }}</td>
+      <td>{{ b[3] }}</td>
+      <td>₹ {{ b[4] }}</td>
+
+      <!-- STATUS -->
+      <td>
+        {% if b[5] == 'PAID' %}
+          <span class="badge bg-success">Paid</span>
+        {% elif b[5] == 'CANCELLED' %}
+          <span class="badge bg-danger">Cancelled</span>
+        {% else %}
+          <span class="badge bg-warning text-dark">Confirmed</span>
+        {% endif %}
+      </td>
+
+      <!-- ACTIONS -->
+      <td>
+        {% if b[5] == 'CONFIRMED' %}
+          <a href="{{ url_for('booking_summary', booking_id=b[6]) }}"
+   class="btn btn-sm btn-primary">
+  View Summary
+</a>
+
+          <a href="{{ url_for('edit_booking', booking_id=b[6]) }}"
+             class="btn btn-sm btn-warning mb-1">
+            Edit
+          </a>
+
+          <a href="{{ url_for('cancel_booking', booking_id=b[6]) }}"
+             class="btn btn-sm btn-danger mb-1"
+             onclick="return confirm('Cancel this booking?')">
+             Cancel
+          </a>
+
+        {% elif b[5] == 'PAID' %}
+          <span class="text-success fw-bold">✔ Completed</span>
+          <a href="{{ url_for('invoice', booking_id=b[6]) }}"
+   class="btn btn-sm btn-outline-success">
+   View Invoice
+</a>
+        {% else %}
+          <span class="text-muted">No actions</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

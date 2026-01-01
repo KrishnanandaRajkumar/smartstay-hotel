@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+
+    <div class="alert alert-danger text-center shadow">
+      <h4 class="alert-heading">Room Not Available</h4>
+      <p>{{ message }}</p>
+      <hr>
+      <a href="/rooms" class="btn btn-primary me-2">
+        Choose Another Room
+      </a>
+      <a href="javascript:history.back()" class="btn btn-secondary">
+        Change Dates
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

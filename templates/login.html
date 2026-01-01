@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">Customer Login</h2>
+
+<form method="post" class="card p-4 shadow w-50 mx-auto">
+  <input name="email" class="form-control mb-2" placeholder="Email" required>
+  <input name="password" type="password" class="form-control mb-3" placeholder="Password" required>
+  <button class="btn btn-primary w-100">Login</button>
+</form>
+
+{% endblock %}

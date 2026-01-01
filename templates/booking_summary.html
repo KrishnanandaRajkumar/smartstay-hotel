@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">Booking Summary</h2>
+
+<div class="card mx-auto shadow p-4" style="max-width:600px">
+
+  <p><strong>Room:</strong> {{ booking[0] }}</p>
+  <p><strong>Check-in:</strong> {{ booking[1] }}</p>
+  <p><strong>Check-out:</strong> {{ booking[2] }}</p>
+  <p><strong>Guests:</strong> {{ booking[3] }}</p>
+
+  <hr>
+
+  <p><strong>Food Option:</strong> {{ booking[4] }}</p>
+  <p><strong>Gym:</strong> {{ "Yes" if booking[5] else "No" }}</p>
+  <p><strong>Pool:</strong> {{ "Yes" if booking[6] else "No" }}</p>
+
+  <hr>
+
+  <h4>Total Amount: ₹ {{ booking[7] }}</h4>
+
+  <div class="d-flex justify-content-between mt-4">
+    <a href="{{ url_for('my_bookings') }}" class="btn btn-secondary">Back</a>
+    <a href="{{ url_for('pay_now', booking_id=booking_id) }}"
+       class="btn btn-primary">
+       Proceed to Payment
+    </a>
+  </div>
+
+</div>
+
+{% endblock %}

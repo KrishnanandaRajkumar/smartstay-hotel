@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">Edit Booking</h2>
+
+<form method="post" class="card p-4 shadow w-50 mx-auto">
+
+  <label>Check-in Date</label>
+  <input type="date" name="check_in" class="form-control mb-2" value="{{ booking[0] }}" required>
+
+  <label>Check-out Date</label>
+  <input type="date" name="check_out" class="form-control mb-2" value="{{ booking[1] }}" required>
+
+  <label>Food Option</label>
+  <select name="food_option" class="form-control mb-2">
+    <option value="None" {% if booking[2]=='None' %}selected{% endif %}>No Food</option>
+    <option value="Breakfast" {% if booking[2]=='Breakfast' %}selected{% endif %}>Breakfast</option>
+    <option value="Full Board" {% if booking[2]=='Full Board' %}selected{% endif %}>Full Board</option>
+  </select>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="gym" {% if booking[3] %}checked{% endif %}>
+    <label class="form-check-label">Gym Access</label>
+  </div>
+
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" name="pool" {% if booking[4] %}checked{% endif %}>
+    <label class="form-check-label">Swimming Pool</label>
+  </div>
+
+  <button class="btn btn-success w-100">Update Booking</button>
+
+</form>
+
+{% endblock %}

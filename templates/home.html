@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- ===================== -->
+<!-- HERO SECTION -->
+<!-- ===================== -->
+<div class="p-5 mb-5 bg-dark text-white rounded-3"
+     style="background-image:url('https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg');
+            background-size:cover;
+            background-position:center;">
+  <div class="container py-5"
+       style="background:rgba(0,0,0,0.65); border-radius:12px;">
+    <h1 class="display-5 fw-bold">Welcome to SmartStay Hotel</h1>
+    <p class="col-md-8 fs-4">
+      Experience comfort, luxury, and premium hospitality at affordable prices.
+    </p>
+    <a href="/rooms" class="btn btn-primary btn-lg me-2">View Rooms</a>
+    <a href="/register" class="btn btn-success btn-lg me-2">Register</a>
+    <a href="/login" class="btn btn-outline-light btn-lg">Login</a>
+  </div>
+</div>
+
+<!-- ===================== -->
+<!-- ABOUT SECTION -->
+<!-- ===================== -->
+<div class="row align-items-center my-5">
+  <div class="col-md-6">
+    <h2>About SmartStay</h2>
+    <p>
+      SmartStay Hotel offers modern rooms, premium facilities, and exceptional
+      service. Whether you are traveling for business or leisure, we ensure a
+      comfortable and memorable stay.
+    </p>
+    <ul class="list-unstyled">
+      <li>✔ 24/7 Room Service</li>
+      <li>✔ Free High-Speed Wi-Fi</li>
+      <li>✔ Gym & Swimming Pool</li>
+      <li>✔ Multi-Cuisine Restaurant</li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <img src="https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg"
+         class="img-fluid rounded shadow">
+  </div>
+</div>
+
+<!-- ===================== -->
+<!-- WHY CHOOSE US -->
+<!-- ===================== -->
+<h2 class="text-center mb-4">Why Choose SmartStay?</h2>
+
+<div class="row text-center mb-5">
+  <div class="col-md-4">
+    <div class="card p-4 shadow h-100">
+      <h4>Luxury Rooms</h4>
+      <p>Spacious, clean, and modern rooms with premium interiors.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-4 shadow h-100">
+      <h4>Best Pricing</h4>
+      <p>Transparent pricing with no hidden charges.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-4 shadow h-100">
+      <h4>Easy Booking</h4>
+      <p>Simple and fast booking with instant confirmation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== -->
+<!-- FACILITIES SECTION -->
+<!-- ===================== -->
+<h2 class="text-center mb-4">Our Facilities</h2>
+
+<div class="row text-center mb-5">
+
+  <!-- Gym -->
+  <div class="col-md-4 mb-3">
+    <div class="card shadow h-100">
+      <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg"
+           class="card-img-top"
+           style="height:220px; object-fit:cover;">
+      <div class="card-body">
+        <h5>Gym</h5>
+        <p>Fully equipped fitness center with modern equipment.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swimming Pool -->
+  <div class="col-md-4 mb-3">
+    <div class="card shadow h-100">
+      <img src="https://images.pexels.com/photos/261045/pexels-photo-261045.jpeg"
+           class="card-img-top"
+           style="height:220px; object-fit:cover;">
+      <div class="card-body">
+        <h5>Swimming Pool</h5>
+        <p>Luxury pool for relaxation and recreation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Food -->
+  <div class="col-md-4 mb-3">
+    <div class="card shadow h-100">
+      <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg"
+           class="card-img-top"
+           style="height:220px; object-fit:cover;">
+      <div class="card-body">
+        <h5>Food & Dining</h5>
+        <p>Delicious multi-cuisine meals and room service.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== -->
+<!-- FINAL CTA -->
+<!-- ===================== -->
+<div class="text-center mb-5">
+  <h3>Ready to Book Your Stay?</h3>
+  <p>Explore our rooms and enjoy premium facilities.</p>
+  <a href="/rooms" class="btn btn-primary btn-lg">Browse Rooms</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">Admin Dashboard</h2>
+
+<!-- STATS -->
+<div class="row mb-4">
+  <div class="col-md-6">
+    <div class="alert alert-primary text-center">
+      <strong>Total Bookings:</strong> {{ total }}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="alert alert-success text-center">
+      <strong>Today's Check-ins:</strong> {{ today }}
+    </div>
+  </div>
+</div>
+
+<!-- BOOKINGS TABLE -->
+<div class="table-responsive">
+  <table class="table table-bordered table-striped align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Guest</th>
+        <th>Room</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+        <th>Guests</th>
+        <th>Food</th>
+        <th>Gym</th>
+        <th>Pool</th>
+        <th>Total (₹)</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for b in bookings %}
+      <tr>
+        <td>{{ b[0] }}</td>
+        <td>{{ b[1] }}</td>
+        <td>{{ b[2] }}</td>
+        <td>{{ b[3] }}</td>
+        <td>{{ b[4] }}</td>
+        <td>{{ b[5] }}</td>
+        <td>{{ "Yes" if b[6] else "No" }}</td>
+        <td>{{ "Yes" if b[7] else "No" }}</td>
+        <td>{{ b[8] }}</td>
+
+        <!-- STATUS -->
+        <td>
+          {% if b[9] == 'PAID' %}
+            <span class="badge bg-success">Paid</span>
+          {% elif b[9] == 'CANCELLED' %}
+            <span class="badge bg-danger">Cancelled</span>
+          {% else %}
+            <span class="badge bg-warning text-dark">Confirmed</span>
+          {% endif %}
+        </td>
+
+        <!-- ADMIN ACTION -->
+        <td>
+          {% if b[9] != 'CANCELLED' %}
+            <a href="{{ url_for('admin_cancel_booking', booking_id=b[10]) }}"
+               class="btn btn-sm btn-danger"
+               onclick="return confirm('Cancel this booking?')">
+               Cancel
+            </a>
+          {% else %}
+            <span class="text-muted">—</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<a href="{{ url_for('admin_logout') }}" class="btn btn-danger mt-3">Logout</a>
+
+{% endblock %}
